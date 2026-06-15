@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Fonts */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Premium Space Theme (Dark First) */
+  --bg-gradient: linear-gradient(135deg, #030014 0%, #080321 50%, #02000d 100%);
+  --bg-color: #030014;
+  --surface: rgba(15, 8, 32, 0.45);
+  --surface-hover: rgba(26, 15, 54, 0.65);
+  --surface-solid: #080321;
+  --border: rgba(168, 85, 247, 0.15);
+  --border-focus: rgba(168, 85, 247, 0.6);
+  
+  --primary-accent: #a855f7; /* Purple */
+  --secondary-accent: #6366f1; /* Indigo */
+  --accent-glow: rgba(168, 85, 247, 0.2);
+  --pink-glow: rgba(99, 102, 241, 0.2);
+
+  --text-main: #f3f0ff;
+  --text-muted: #bfaecf;
+  --text-inverse: #030014;
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+
+  --glass-blur: blur(20px);
+  --glass-border: 1px solid rgba(168, 85, 247, 0.12);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+  --scrollbar-track: #050215;
+  --scrollbar-thumb: #1e113c;
+}
+
+@theme {
+  --color-primary-accent: var(--primary-accent);
+  --color-secondary-accent: var(--secondary-accent);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  
+  --color-bg-color: var(--bg-color);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-solid: var(--surface-solid);
+  --color-border-focus: var(--border-focus);
+  
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 7s ease-in-out infinite 2s;
+  --animate-spin-slow: spin 25s linear infinite;
+  --animate-spin-slow-reverse: spin 35s linear infinite reverse;
+  --animate-pulse-soft: pulse-soft 8s infinite alternate ease-in-out;
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(1.05);
+    }
+  }
+}
+
+/* Global Reset & Base */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-color: #030014;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background: var(--bg-color);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+}
+
+/* Glassmorphism Helper Classes */
+.glass {
+  background: var(--surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-interactive {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.glass-interactive:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-focus);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 20px var(--accent-glow);
+}
+
+/* Background Blur Blobs */
+.decor-blob {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.decor-blob-1 {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+  top: 10%;
+  left: -10%;
+}
+
+.decor-blob-2 {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+  bottom: 20%;
+  right: -10%;
+}
+
+.decor-blob-3 {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  top: 50%;
+  left: 40%;
+}
